@@ -2,19 +2,84 @@
 //
 
 #include <iostream>
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+};
+
+Node* createNode(int x) {
+    Node* n = new Node;
+    n->data = x;
+    n->next = NULL;
+    return n;
+}
+
+Node* insert(Node* head, int ele) {
+    Node* newNode = createNode(ele);
+    newNode->next = head;
+    head = newNode;
+    return head;
+}
+
+Node* deleteHead(Node* head) {
+    cout << "\nPopped element: " << head->data << "\n\n";
+    Node* temp = head;
+    head = head->next;
+    free(temp);
+    return head;
+}
+
+void display(Node* head) {
+    cout << "\nStack elements: \n";
+    while (head != NULL) {
+        cout << head->data << " ";
+        head = head->next;
+    }
+    cout << "\n\n";
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    int element, length=0;
+    Node* head = NULL;
+
+    while (true) {
+        cout << "Enter 1 to push\nEnter 2 to pop\nEnter 3 to get size\nEnter 4 to display stack\nEnter 5 to exit\nEnter: ";
+        int flag;
+        cin >> flag;
+
+        if (flag == 1) {        //insert
+            cin >> element;
+            cout << "\n";
+            length++;
+            head = insert(head, element);
+        }
+
+        else if (flag == 2) {       //delete
+
+            if (length == 0)
+                cout << "\nEmpty\n\n";
+
+            else {
+                length--;
+                head = deleteHead(head);
+            }
+        }
+        else if (flag == 3)         //size
+            cout << "\nStack size is " << length << "\n\n";
+
+        else if (flag == 4) {
+            if (length == 0)
+                cout << "\nEmpty\n\n";
+            else
+                display(head);
+        }
+
+        else
+            break;
+    }
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
