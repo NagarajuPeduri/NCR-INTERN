@@ -76,7 +76,6 @@ Node* creatingLinkedList(Node* head, int size) {
 }
 
 
-
 void display(Node* head) {
     cout << "\nAfter merging: \n";
     while (head != NULL) {
