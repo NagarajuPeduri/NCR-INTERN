@@ -97,12 +97,25 @@ int main()
     cin >> llsize;
     ll = creatingLinkedList(ll, llsize);
 
-    cout << "\nEnter value: ";
-    cin >> key;
+    
+    while (true) {
+        int flag;
+        cout << "\nEnter 1 to adjust any value\nEnter 2 to exit\nEnter: ";
+        cin >> flag;
 
-    ll = selfAdjust(ll, key);
+        switch (flag) {
+        case 1:
+            cout << "\nEnter value: ";
+            cin >> key;
+            ll = selfAdjust(ll, key);
+            break;
+            
+        case 2:
+            return 0;
+        }
 
-    display(ll);
+        display(ll);
+    }
 
     return 0;
 }
