@@ -27,6 +27,10 @@ Node* insert(Node* head, int ele) {
 
 
 Node* creatingLinkedList(Node* head, int num, int size) {
+
+    if (size == 0)
+        return NULL;
+
     cout << "\nEnter linked list " << num << " elements :\n";
     int ele;
     Node* thead;
@@ -91,10 +95,21 @@ int main()
 
     cout << "Enter 1st linked list size: ";
     cin >> ll1size;
+
+    if (ll1size == 0) {
+        cout << "\nPlease enter atleaset one node";
+        return 0;
+    }
     ll1 = creatingLinkedList(ll1, 1, ll1size);
 
     cout << "\nEnter 2nd linked list size: ";
     cin >> ll2size;
+
+    if (ll2size == 0) {
+        cout << "\nPlease enter atleaset one node";
+        return 0;
+    }
+
     ll2 = creatingLinkedList(ll2, 2, ll2size);
 
     cout << "\nEnter position: ";

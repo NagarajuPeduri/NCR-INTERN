@@ -66,6 +66,7 @@ int main()
             else {
                 length--;
                 head = deleteHead(head);
+
             }
         }
         else if (flag == 3)         //size
