@@ -30,13 +30,13 @@ Node* selfAdjust(Node* head, int key) {
     Node* thead, * temp = head;
     thead = head;
 
-    if (head == NULL)
+    if (head == NULL)       //base conditions
         return head;
 
     if ((head->next == NULL && key == head->data) || (key == head->data))
         return head;
 
-    while (head->next != NULL) {        //find the node, store and remove it, then join the linked list. 
+    while (head->next != NULL) {        //find the node, store and remove it, then join the linked lists. 
         if (head->next->data == key) {
             temp = head->next;
             head->next = head->next->next;
@@ -46,12 +46,12 @@ Node* selfAdjust(Node* head, int key) {
         head = head->next;
     }
 
-    if (head->next == NULL && head->data!=key) {
+    if (head->next == NULL && head->data!=key) {        //check if the given key node is not present.
         cout << "\nInvalid value";
         return thead;
     }
 
-    temp->next = thead;
+    temp->next = thead;         //adjust the key node to the first position. 
     thead = temp;
     return thead;
 }

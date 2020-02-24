@@ -51,36 +51,40 @@ int main()
         int flag;
         cin >> flag;
 
-        if (flag == 1) {        //insert
+        switch (flag) {
+        case 1:     //Pushing
+            cout << "Enter: ";
             cin >> element;
             cout << "\n";
             length++;
             head = insert(head, element);
-        }
+            break;
 
-        else if (flag == 2) {       //delete
-
+        case 2:     //popping
             if (length == 0)
                 cout << "\nEmpty\n\n";
 
             else {
                 length--;
                 head = deleteHead(head);
-
             }
-        }
-        else if (flag == 3)         //size
-            cout << "\nStack size is " << length << "\n\n";
+            break;
 
-        else if (flag == 4) {
+        case 3:     //size
+            cout << "\nStack size is " << length << "\n\n";
+            break;
+
+        case 4:     //display
             if (length == 0)
                 cout << "\nEmpty\n\n";
             else
                 display(head);
-        }
-
-        else
             break;
+
+        case 5:     //Exit
+            return 0;
+
+        }
     }
 }
 

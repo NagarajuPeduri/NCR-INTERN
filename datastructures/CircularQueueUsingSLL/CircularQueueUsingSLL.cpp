@@ -42,7 +42,12 @@ Node* deleteHead(Node* front, Node* rear) {
 
 void display(Node* front) {
     Node* temp = front;
-    cout << "\nStack elements: \n";
+    cout << "\nQueue elements: \n";
+    if (temp != NULL) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+
     while (temp!=front) {
         cout << temp->data << " ";
         temp = temp->next;
@@ -60,7 +65,9 @@ int main()
         int flag;
         cin >> flag;
 
-        if (flag == 1) {        //insert
+        switch (flag) {
+        case 1:         //Enqueuing into the queue
+            cout << "Enter: ";
             cin >> element;
             cout << "\n";
             length++;
@@ -71,10 +78,9 @@ int main()
             else {
                 rear = insert(front, rear, element);
             }
-        }
+            break;
 
-        else if (flag == 2) {       //delete
-
+        case 2:     //Dequeuing from the queue
             if (length == 0)
                 cout << "\nEmpty\n\n";
 
@@ -82,20 +88,22 @@ int main()
                 length--;
                 front = deleteHead(front, rear);
             }
-        }
+            break;
 
-        else if (flag == 3)         //size
+        case 3:     //size
             cout << "\Queue size is " << length << "\n\n";
+            break;
 
-        else if (flag == 4) {
+        case 4:     //display
             if (length == 0)
                 cout << "\nEmpty\n\n";
             else
                 display(front);
-        }
-
-        else
             break;
+
+        case 5:     //exit
+            return 0;
+        }
     }
 }
 
