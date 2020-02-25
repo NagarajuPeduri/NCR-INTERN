@@ -3,22 +3,32 @@
 
 #include <iostream>
 #include<set>
+#include <vector>
+#include<string>
 using namespace std;
 
 
-int main() {
-	set<string> s;
-	s.insert("hello");
-	s.insert("hi");
-	s.insert("wow");
+vector<string> splitStringsBySlash(char str[])
+{
+	char* token = strtok(str, "\\");
+	vector<string> vec;
 
-	auto pos = s.find("hello");
-	s.erase(pos);
-
-	set<string>::iterator it;
-
-	for (it = s.begin(); it != s.end(); it++) {
-		cout << *it << " ";
+	while (token != NULL)
+	{
+		vec.push_back(token);
+		token = strtok(NULL, "\\");
 	}
+	return vec;
+}
+
+
+
+int main() {
+	char ch[100];
+	cin.getline(ch, 100);
+	vector<string> vec;
+	vec = splitStringsBySlash(ch);
+	for (string s : vec)
+		cout << s << " ";
 }
 

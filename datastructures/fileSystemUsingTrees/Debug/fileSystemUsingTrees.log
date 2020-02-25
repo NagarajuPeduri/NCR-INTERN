@@ -1,10 +1,18 @@
 ﻿  fileSystemUsingTrees.cpp
-C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(25,1): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(74,1): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(440): message : see declaration of 'strtok'
-C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(31,1): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(80,1): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(440): message : see declaration of 'strtok'
-C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(48,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(57,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(163,31): warning C4018: '<': signed/unsigned mismatch
-C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(135,15): warning C4101: 'sep1': unreferenced local variable
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(88,1): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(440): message : see declaration of 'strtok'
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(94,1): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(440): message : see declaration of 'strtok'
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(111,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(120,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(129,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(187,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(196,39): warning C4018: '<': signed/unsigned mismatch
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(206,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(188,1): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message : see declaration of 'strcpy'
   fileSystemUsingTrees.vcxproj -> C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\Debug\fileSystemUsingTrees.exe

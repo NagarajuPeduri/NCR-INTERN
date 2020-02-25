@@ -10,7 +10,6 @@
 #include <string>
 using namespace std;
 
-
 class Directory {
 public:
     Directory* prevPointer = NULL;
@@ -18,49 +17,6 @@ public:
     vector<string> file;
     set<pair<string, pair<Directory*, bool>>> list;       //for storing the files or folders in sorted order.
 };
-
-
-vector<string> splitStrings(char str[])
-{
-    char* token = strtok(str, " ");
-    vector<string> vec;
-
-    while (token != NULL)
-    {
-        vec.push_back(token);
-        token = strtok(NULL, " ");
-    }
-    return vec;
-}
-
-
-string join(vector<string> path) {
-    string currPath = "";
-    for (auto s : path) {
-        currPath += s;
-        currPath += "\\";
-    }
-    return currPath;
-}
-
-
-int getIndexOfDir(Directory* presentDir, string name) {
-    for (int i = 0; i < presentDir->dir.size(); i++) {
-        if (presentDir->dir[i].second == name)
-            return i;
-    }
-    return -1;
-}
-
-
-int getIndexOfFile(Directory* presentDir, string name) {
-    for (int i = 0; i < presentDir->file.size(); i++) {
-        if (presentDir->file[i] == name)
-            return i;
-    }
-    return -1;
-}
-
 
 
 Directory* createDir(string name, Directory* presentDir) {
@@ -111,13 +67,82 @@ void display(Directory* presentDir) {
 }
 
 
+/*---------------------Helper functions---------------------*/
+
+vector<string> splitStringsBySlash(char str[])
+{
+    char* token = strtok(str, "\\");
+    vector<string> vec;
+
+    while (token != NULL)
+    {
+        vec.push_back(token);
+        token = strtok(NULL, "\\");
+    }
+    return vec;
+}
+
+
+vector<string> splitStrings(char str[])
+{
+    char* token = strtok(str, " ");
+    vector<string> vec;
+
+    while (token != NULL)
+    {
+        vec.push_back(token);
+        token = strtok(NULL, " ");
+    }
+    return vec;
+}
+
+
+string join(vector<string> path) {
+    string currPath = "";
+    for (auto s : path) {
+        currPath += s;
+        currPath += "\\";
+    }
+    return currPath;
+}
+
+
+int getIndexOfDir(Directory* presentDir, string name) {
+    for (int i = 0; i < presentDir->dir.size(); i++) {
+        if (presentDir->dir[i].second == name)
+            return i;
+    }
+    return -1;
+}
+
+
+int getIndexOfFile(Directory* presentDir, string name) {
+    for (int i = 0; i < presentDir->file.size(); i++) {
+        if (presentDir->file[i] == name)
+            return i;
+    }
+    return -1;
+}
+
+
+bool containsForwardSlash(string s) {
+    for (int i = 0; i < s.size(); i++) {
+        if (s[i] == '/')
+            return true;
+    }
+    return false;
+}
+
+/*-------------------------------------------------------------*/
+
+
 int main()
 {
-    char ch[30];
+    char ch[100];
     vector<string> path;
     path.push_back("C:");
     
-    map<string, int> m{ {"mkdir",1},  {"mkf", 2} , {"rmdir", 3}, {"rmf", 4}, {"dir", 5 }, {"cd", 6 }, {"pwd", 7}, {"cd..", 8} };
+    map<string, int> m{ {"mkdir",1},  {"mkf", 2} , {"rmdir", 3}, {"rmf", 4}, {"dir", 5 }, {"cd", 6 }, {"pwd", 7}, {"cd..", 8}, {"exit", 9} };
 
     Directory* presentDir = NULL, * temp = NULL;
     presentDir = createDir("C:", presentDir);
@@ -127,13 +152,8 @@ int main()
      
     while (true) {
         cout << currPath;
-        //scanf("%[^\n]%*c", ch);
-        //fgets(ch, 20, stdin);
-        cin.getline(ch, 30);
+        cin.getline(ch, 100);
         
-        //cout << ch;
-        char* sep1;
-        // *sep1 = " ";
         vector<string> vec;
         vec = splitStrings(ch);
 
@@ -152,11 +172,34 @@ int main()
         vector<pair<Directory*, string>>::iterator dirIt;       //iterator for directory vector
         set<pair<string, pair<Directory*, bool>>> setIt;        //iterator for set
         vector<string>::iterator fileIt;                        //iterator for file vector
+        Directory* thead;                                       //for storing presentDir
+        char copy[100];
+        vector<string> afterSplit;                              //to store the strings after splitting with seperator '\'
         int ind;
 
         switch (m[vec[0]]) {
         case 1:     //mkdir
-            createDir(vec[1], presentDir);
+            if (containsForwardSlash(vec[1])) {
+                cout << "The syntax of the command is incorrect\n";
+                continue;
+            }
+            thead = presentDir;
+            for (int i = 1; i < vec.size(); i++) {
+                strcpy(copy, vec[i].c_str());
+                afterSplit = splitStringsBySlash(copy);
+
+                if (afterSplit.size() < 2) {
+                    createDir(vec[i], presentDir);
+                }
+
+                if (afterSplit.size() > 1) {
+                    for (int j = 0; j < afterSplit.size(); j++) {
+                        presentDir = createDir(afterSplit[j], presentDir);
+                        presentDir = presentDir->dir[presentDir->dir.size() - 1].first;
+                    }
+                }                   
+            }
+            presentDir = thead;
             break;
 
         case 2:     //mkf            
@@ -213,7 +256,7 @@ int main()
             break;
 
         case 8:     //cd ..
-            if (presentDir->prevPointer == NULL) {
+            if (presentDir->prevPointer == NULL) {      //If reaches the root directory
                 cout << "Path does not exists.\n";
             }
             else {
@@ -222,6 +265,9 @@ int main()
                 presentDir = presentDir->prevPointer;
             }
             break;
+
+        case 9:
+            return 0;
 
         default:
             cout << "command '" << vec[0] << "' is not valid.\n";

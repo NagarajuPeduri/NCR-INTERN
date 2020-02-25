@@ -1,2 +1,6 @@
 ﻿  testing.cpp
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\testing\testing.cpp(13,1): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(440): message : see declaration of 'strtok'
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\testing\testing.cpp(19,1): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(440): message : see declaration of 'strtok'
   testing.vcxproj -> C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\Debug\testing.exe
