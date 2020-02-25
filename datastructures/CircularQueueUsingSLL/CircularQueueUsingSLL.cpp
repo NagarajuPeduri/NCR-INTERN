@@ -104,6 +104,9 @@ int main()
 
         case 5:     //exit
             return 0;
+
+        default:
+            return 0;
         }
     }
 }

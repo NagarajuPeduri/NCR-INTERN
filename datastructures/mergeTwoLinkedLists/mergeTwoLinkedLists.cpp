@@ -115,7 +115,7 @@ int main()
 
     cout << "\nEnter position: ";
     cin >> pos;         //checking if position is valid.
-    if (pos > ll1size) {
+    if (pos > ll1size || pos<0) {
         cout << "\nInvalid position!";
         return 0;
     }

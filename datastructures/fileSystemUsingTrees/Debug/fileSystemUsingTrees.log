@@ -1,0 +1,10 @@
+﻿  fileSystemUsingTrees.cpp
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(25,1): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(440): message : see declaration of 'strtok'
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(31,1): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(440): message : see declaration of 'strtok'
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(48,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(57,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(163,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(135,15): warning C4101: 'sep1': unreferenced local variable
+  fileSystemUsingTrees.vcxproj -> C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\Debug\fileSystemUsingTrees.exe

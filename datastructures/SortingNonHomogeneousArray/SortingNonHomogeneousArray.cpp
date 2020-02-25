@@ -19,6 +19,7 @@ bool comparator(string a, string b) {
         int x, y;
         x = stoi(a);
         y = stoi(b);
+        //cout << x << " " << y << endl;
         return x < y;
     }
     else {                                      // if a and b are of different types.
