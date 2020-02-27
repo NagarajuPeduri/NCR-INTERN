@@ -10,9 +10,9 @@ C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(440): 
 C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(145,23): warning C4018: '<': signed/unsigned mismatch
 C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(154,23): warning C4018: '<': signed/unsigned mismatch
 C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(163,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(223,31): warning C4018: '<': signed/unsigned mismatch
-C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(251,39): warning C4018: '<': signed/unsigned mismatch
-C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(276,31): warning C4018: '<': signed/unsigned mismatch
-C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(224,1): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(228,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(256,39): warning C4018: '<': signed/unsigned mismatch
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(287,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\fileSystemUsingTrees\fileSystemUsingTrees.cpp(229,1): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message : see declaration of 'strcpy'
   fileSystemUsingTrees.vcxproj -> C:\Users\np185137\Documents\NCR work\NCR-INTERN\datastructures\Debug\fileSystemUsingTrees.exe

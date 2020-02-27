@@ -215,6 +215,11 @@ int main()
         switch (m[vec[0]]) {
         case 1:     //mkdir
 
+            if (vec.size() == 1) {
+                cout << "The syntax of the command is incorrect.\n\n";
+                continue;
+            }
+
             if (containsForwardSlash(vec[1])) {
                 cout << "The syntax of the command is incorrect\n\n";
                 continue;
@@ -272,7 +277,13 @@ int main()
             presentDir = thead;
             break;
 
-        case 2:     //mkf            
+        case 2:     //mkf   
+
+            if (vec.size() == 1) {
+                cout << "The syntax of the command is incorrect.\n\n";
+                continue;
+            }
+
             for (int i = 1; i < vec.size(); i++) {
                 if (containsFile(presentDir, vec[i])) {
                     cout << "File named '" << vec[i] << "' already exists.\n\n";
@@ -290,6 +301,12 @@ int main()
             break;
 
         case 3:     //rmdir
+
+            if (vec.size() == 1) {
+                cout << "The syntax of the command is incorrect.\n\n";
+                continue;
+            }
+
             dirIt = presentDir->dir.begin();
             ind = getIndexOfDir(presentDir, vec[1]);
             if (ind == -1) {
@@ -303,6 +320,12 @@ int main()
             break;
 
         case 4: //rmf (remove file)
+
+            if (vec.size() == 1) {
+                cout << "The syntax of the command is incorrect.\n\n";
+                continue;
+            }
+
             ind = getIndexOfFile(presentDir, vec[1]);
             if (ind == -1) {
                 cout << "File named '" << vec[1] << "' does not exist.\n\n";
@@ -320,6 +343,12 @@ int main()
             break;
 
         case 6:     //cd (change directory)
+
+            if (vec.size() == 1) {
+                cout << "The syntax of the command is incorrect.\n\n";
+                continue;
+            }
+
             checkDots = containsAllDots(vec[1]);
             if (checkDots.second != 2 && checkDots.first) {
                 cout << "\n";
@@ -342,6 +371,12 @@ int main()
             break;
 
         case 8:     //cd ..
+
+            /*if (vec.size() == 1) {
+                cout << "The syntax of the command is incorrect.\n\n";
+                continue;
+            }*/
+
             if (presentDir->prevPointer == NULL) {      //If reaches the root directory
                 cout << "\n";
             }
