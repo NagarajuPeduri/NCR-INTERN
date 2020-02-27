@@ -28,7 +28,6 @@ int main() {
 	cin.getline(ch, 100);
 	vector<string> vec;
 	vec = splitStringsBySlash(ch);
-	for (string s : vec)
-		cout << s << " ";
+	
 }
 

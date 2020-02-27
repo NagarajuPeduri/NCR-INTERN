@@ -36,18 +36,27 @@ Directory* createDir(string name, Directory* presentDir) {
 }
 
 
-pair<Directory*, bool> changeDir(Directory* presentDir, string name) {
+bool containsFile(Directory* presentDir, string name) {
+    for (auto s : presentDir->file) {
+        if (s == name)
+            return true;
+    }
+    return false;
+}
+
+
+pair<Directory*, bool> containsDir(Directory* presentDir, string name) {
     Directory* temp = NULL;
     //unable to find name in set.. as set contains pair<str, pair<Directory*, bool>> 
-    /*
-    if (presentDir->list.find(name) != presentDir->list.end()) {
+    
+    /*if (presentDir->list.find(make_pair(name, make_pair(presentDir, true))) != presentDir->list.end()) {
 
     }*/
 
     for (auto s : presentDir->dir) {
         if (s.second == name) {
             return make_pair(s.first, true);
-        }            
+        }   
     }
     return make_pair(temp, false);
 }
@@ -67,7 +76,32 @@ void display(Directory* presentDir) {
 }
 
 
-/*---------------------Helper functions---------------------*/
+/*--------------------- Helper functions ---------------------*/
+
+bool isValidName(string name){
+    string invalid = "*+,/:;<=>?\\[]|";
+
+    int count = 0;
+    for (char c : name) {
+        int val = invalid.find_first_of(c);
+        if (val != -1)
+            return false;
+    }
+    return true;
+}
+
+
+pair<bool, int> containsAllDots(string name) {
+    int count = 0;
+    for (char c : name) {
+        if (c == '.')
+            count++;
+    }
+    if (count == name.size())
+        return make_pair(true, count);
+    return make_pair(false, count);
+}
+
 
 vector<string> splitStringsBySlash(char str[])
 {
@@ -146,7 +180,7 @@ int main()
 
     Directory* presentDir = NULL, * temp = NULL;
     presentDir = createDir("C:", presentDir);
-    cout << "Command prompt\n\n";
+    cout << "Microsoft Windows [Version 10.0.17763.973]\n(c) 2020 Microsoft Corporation. All rights reserved.\n\n";
 
     string currPath = join(path);
      
@@ -169,6 +203,7 @@ int main()
         }
 
         pair<Directory*, bool> val;
+        pair<bool, int> checkDots;
         vector<pair<Directory*, string>>::iterator dirIt;       //iterator for directory vector
         set<pair<string, pair<Directory*, bool>>> setIt;        //iterator for set
         vector<string>::iterator fileIt;                        //iterator for file vector
@@ -179,23 +214,58 @@ int main()
 
         switch (m[vec[0]]) {
         case 1:     //mkdir
+
             if (containsForwardSlash(vec[1])) {
-                cout << "The syntax of the command is incorrect\n";
+                cout << "The syntax of the command is incorrect\n\n";
                 continue;
             }
-            thead = presentDir;
-            for (int i = 1; i < vec.size(); i++) {
+            thead = presentDir;                                 //store the presentDir 
+            for (int i = 1; i < vec.size(); i++) {              //iterate over strings seperated by spaces which are entered after mkdir
                 strcpy(copy, vec[i].c_str());
-                afterSplit = splitStringsBySlash(copy);
+                afterSplit = splitStringsBySlash(copy);         //split the string with '\'
 
-                if (afterSplit.size() < 2) {
-                    createDir(vec[i], presentDir);
+                presentDir = thead;     
+
+                val = containsDir(presentDir, afterSplit[0]);
+
+                if (afterSplit.size()<2 && val.second) {        //Check if the folder already exists.
+                    cout << "Directory named '" << afterSplit[0] << "' already exists.\n\n";
+                    continue;
                 }
 
-                if (afterSplit.size() > 1) {
+                if (afterSplit.size() < 2) {                    //if the string has no subfolders to add, then add the folder directly to the current directory.
+                    if (containsAllDots(afterSplit[0]).first){  //check for strings containing dots. 
+                        cout << "A subdirectory or file " << afterSplit[0] << " already exists\n\n";
+                        continue; 
+                    }
+
+                    if (!isValidName(vec[i])) {                 //check if the string name is valid. 
+                        cout << "The filename, directory name, or volume label syntax is incorrect.\n\n";
+                    }
+                    else {
+                        createDir(vec[i], presentDir);          //if the string name is valid and if name is not full of dots, then add the folder to current directory. 
+                    }
+                }
+
+                if (afterSplit.size() > 1) {                    //if contains subfolders to add.
                     for (int j = 0; j < afterSplit.size(); j++) {
-                        presentDir = createDir(afterSplit[j], presentDir);
-                        presentDir = presentDir->dir[presentDir->dir.size() - 1].first;
+
+                        if (val.second) {                       //if the directory already exists, move to it.     
+                            val.second = false;
+                            presentDir = val.first;
+                        }
+                        else {
+                            if (containsAllDots(afterSplit[j]).first) {
+                                cout << "A subdirectory or file " << afterSplit[0] << " already exists\n\n";
+                                break;
+                            }
+                            if (!isValidName(afterSplit[j])) {
+                                cout << "The filename, directory name, or volume label syntax is incorrect.\n\n";
+                                break;
+                            }
+                            presentDir = createDir(afterSplit[j], presentDir);
+                            presentDir = presentDir->dir[presentDir->dir.size() - 1].first;
+                        }
                     }
                 }                   
             }
@@ -204,8 +274,18 @@ int main()
 
         case 2:     //mkf            
             for (int i = 1; i < vec.size(); i++) {
-                presentDir->file.push_back(vec[1]);
-                presentDir->list.insert(make_pair(vec[i], make_pair(temp, false)));
+                if (containsFile(presentDir, vec[i])) {
+                    cout << "File named '" << vec[i] << "' already exists.\n\n";
+                }
+                else {
+                    if (!isValidName(vec[i])) {
+                        cout << "The filename, directory name, or volume label syntax is incorrect.\n\n";
+                    }
+                    else {
+                        presentDir->file.push_back(vec[1]);
+                        presentDir->list.insert(make_pair(vec[i], make_pair(temp, false)));
+                    }
+                }
             }
             break;
 
@@ -213,7 +293,7 @@ int main()
             dirIt = presentDir->dir.begin();
             ind = getIndexOfDir(presentDir, vec[1]);
             if (ind == -1) {
-                cout << "Directory named '" << vec[1] << "' is not present\n";
+                cout << "Directory named '" << vec[1] << "' is not present\n\n";
             }
             else {
                 auto pos = presentDir->list.find(make_pair(vec[1], make_pair(presentDir->dir[ind].first, true)));
@@ -225,13 +305,13 @@ int main()
         case 4: //rmf (remove file)
             ind = getIndexOfFile(presentDir, vec[1]);
             if (ind == -1) {
-                cout << "File named '" << vec[1] << "' does not exist.\n";
+                cout << "File named '" << vec[1] << "' does not exist.\n\n";
             }
             else {
-                auto pos = presentDir->list.find(make_pair(vec[1], make_pair(temp, false)));
-                fileIt = presentDir->file.begin();
-                presentDir->list.erase(pos);
-                presentDir->file.erase(fileIt + ind);
+                auto pos = presentDir->list.find(make_pair(vec[1], make_pair(temp, false)));        //get the position of file_name in file vector. 
+                fileIt = presentDir->file.begin();                                                  //iterator.
+                presentDir->list.erase(pos);                                                        //remove from set.
+                presentDir->file.erase(fileIt + ind);                                               //remove from file vector.    
             }
             break;
 
@@ -240,24 +320,30 @@ int main()
             break;
 
         case 6:     //cd (change directory)
-            val = changeDir(presentDir, vec[1]);
+            checkDots = containsAllDots(vec[1]);
+            if (checkDots.second != 2 && checkDots.first) {
+                cout << "\n";
+                continue;
+            }
+
+            val = containsDir(presentDir, vec[1]);
             if (val.second) {
                 path.push_back(vec[1]);     //push into path vector.
                 currPath = join(path);      //after changing the directory, update the currPath.
                 presentDir = val.first;     //move the currDir.
             }
             else {
-                cout << "The directory named '" << vec[1] << "' is not present in the current directory.\n";
+                cout << "The directory named '" << vec[1] << "' is not present in the current directory.\n\n";
             }
             break;
 
         case 7:     //pwd
-            cout << "PWD: " << currPath<<"\n";
+            cout << "PWD: " << currPath<<"\n\n";
             break;
 
         case 8:     //cd ..
             if (presentDir->prevPointer == NULL) {      //If reaches the root directory
-                cout << "Path does not exists.\n";
+                cout << "\n";
             }
             else {
                 path.pop_back();
@@ -270,7 +356,7 @@ int main()
             return 0;
 
         default:
-            cout << "command '" << vec[0] << "' is not valid.\n";
+            cout << "command '" << vec[0] << "' is not valid.\n\n";
             break;
         }
     }
