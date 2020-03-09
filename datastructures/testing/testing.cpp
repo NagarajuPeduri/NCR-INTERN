@@ -7,27 +7,26 @@
 #include<string>
 using namespace std;
 
+//signature function_name and number arguments. 
 
-vector<string> splitStringsBySlash(char str[])
-{
-	char* token = strtok(str, "\\");
-	vector<string> vec;
+class testing {
+private:
+	int a, b;
 
-	while (token != NULL)
-	{
-		vec.push_back(token);
-		token = strtok(NULL, "\\");
+public:
+	void setter(int x) {
+		a = x;
 	}
-	return vec;
-}
 
-
+	int getter() {
+		return a;
+	}
+};
 
 int main() {
-	char ch[100];
-	cin.getline(ch, 100);
-	vector<string> vec;
-	vec = splitStringsBySlash(ch);
 	
+	testing obj;
+	obj.setter(10);
+	cout << obj.getter();
 }
 

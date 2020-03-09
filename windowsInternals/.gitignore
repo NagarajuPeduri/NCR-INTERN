@@ -1,0 +1,7 @@
+*.opendb
+*.opensdf
+*.sln
+*.vcxproj
+*.vcproj
+*vcxproj.user
+*vcxproj.filters
