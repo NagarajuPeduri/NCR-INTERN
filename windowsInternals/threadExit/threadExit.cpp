@@ -8,7 +8,7 @@ using namespace std;
 DWORD exitCode;
 
 DWORD WINAPI exitThread(LPVOID lpParam) {
-    cout << "Hey there, you have reached here to terminate the thread." << endl;
+    cout << "Hey there, you have reached here to terminate the thread using ExitThread api." << endl;
     ExitThread(exitCode);       //terminate the thread using exitCode.
 }
 
@@ -41,5 +41,7 @@ int main()
             cout << exitCode;
         }      
     }
+
+    CloseHandle(myHandle);
     return 0;
 }

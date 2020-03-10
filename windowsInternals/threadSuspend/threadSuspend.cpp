@@ -39,5 +39,6 @@ int main()
         CloseHandle(myHandle);
     }
 
+    CloseHandle(myHandle);
     return 0;
 }

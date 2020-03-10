@@ -29,9 +29,9 @@ int main()
     }
     else {
         WaitForSingleObject(myHandle, 10);
-        CloseHandle(myHandle);
     }
 
+    CloseHandle(myHandle);
     return 0;
 }
 
