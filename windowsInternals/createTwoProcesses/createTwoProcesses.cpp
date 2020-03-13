@@ -12,11 +12,11 @@ int main()
     STARTUPINFO startInfo, startInfo1;
     PROCESS_INFORMATION processInfo1, processInfo2;
 
-    ZeroMemory(&startInfo, sizeof(startInfo));          //flusing memory
+    ZeroMemory(&startInfo, sizeof(startInfo));          //flushing memory
     ZeroMemory(&processInfo1, sizeof(processInfo1));
     startInfo.cb = sizeof(startInfo);
 
-    ZeroMemory(&startInfo1, sizeof(startInfo1));        //flusing memory
+    ZeroMemory(&startInfo1, sizeof(startInfo1));        //flushing memory
     ZeroMemory(&processInfo2, sizeof(processInfo2));
     startInfo1.cb = sizeof(startInfo1);
 
@@ -24,7 +24,7 @@ int main()
 
     //creating a child process for notepad
     status = CreateProcess(
-        L"C:\\Windows\\System32\\notepad.exe",
+        L"C:\\Users\\np185137\\Documents\\NCR work\\NCR-INTERN\\windowsInternals\\Debug\\threadSuspend.exe",
         NULL,
         NULL,
         NULL,
@@ -41,11 +41,11 @@ int main()
     }
     status = 0;
 
-    WaitForSingleObject(processInfo1.hProcess, INFINITE);       // waiting till the child process of notepad is executed. 
+    //WaitForSingleObject(processInfo1.hProcess, INFINITE);       // waiting till the child process of notepad is executed. 
 
     //creating a child process for calculator
     status = CreateProcess(
-        L"C:\\Windows\\System32\\calc.exe",
+        L"C:\\Windows\\System32\\notepad.exe",
         NULL,
         NULL,
         NULL,
@@ -61,7 +61,13 @@ int main()
         cout << "Cannot open calculator due to error: " << GetLastError() << endl;
     }
 
-    WaitForSingleObject(processInfo2.hProcess, INFINITE);       //waiting till the child process of calculator is executed. 
+    HANDLE handlearr[2];
+    handlearr[0] = processInfo1.hProcess;
+    handlearr[1] = processInfo2.hProcess;
+
+    WaitForMultipleObjects(2, handlearr, TRUE, INFINITE);
+
+    //WaitForSingleObject(processInfo2.hProcess, INFINITE);       //waiting till the child process of calculator is executed. 
 
     cout << "\nProcess details of notepad:\n" << "Process ID: " << processInfo1.dwProcessId << "  |  Thread ID: " << processInfo1.dwThreadId << "\n\n";
     cout << "Process details of calculator:\n" << "Process ID: " << processInfo2.dwProcessId << "  |  Thread ID: " << processInfo2.dwThreadId << endl;

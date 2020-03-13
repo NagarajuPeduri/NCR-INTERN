@@ -10,7 +10,7 @@ using namespace std;
 
 int main()
 {
-    string ipAddress = "127.0.0.1";     //ip address of server
+    string ipAddress = "153.58.141.193";     //ip address of server
     int port = 54000;                   //listening port on the server
 
     //initialize winsock

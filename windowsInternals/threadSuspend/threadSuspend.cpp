@@ -19,7 +19,7 @@ int main()
     unsigned int counter = 0;
 
     char ch;
-    ch = getchar();
+    //ch = getchar();
 
     //creating thread
     HANDLE myHandle = CreateThread(

@@ -48,7 +48,7 @@ int main()
 
 	WCHAR handle[] = { (WCHAR)processInfo.hProcess };
 
-	//creating child process
+
 	processStatus = CreateProcess(
 		L"C:\\Windows\\System32\\calc.exe",
 		handle,			//inherits the parent handle

@@ -1,0 +1,3 @@
+﻿  operationsOnFile.cpp
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\windowsInternals\operationsOnFile\operationsOnFile.cpp(47,20): warning C4101: 'st': unreferenced local variable
+  operationsOnFile.vcxproj -> C:\Users\np185137\Documents\NCR work\NCR-INTERN\windowsInternals\Debug\operationsOnFile.exe

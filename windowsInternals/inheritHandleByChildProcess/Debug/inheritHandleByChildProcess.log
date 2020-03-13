@@ -1,3 +1,1 @@
-﻿  inheritHandleByChildProcess.cpp
-C:\Users\np185137\Documents\NCR work\NCR-INTERN\windowsInternals\inheritHandleByChildProcess\inheritHandleByChildProcess.cpp(49,49): warning C4302: 'type cast': truncation from 'HANDLE' to 'WCHAR'
-  inheritHandleByChildProcess.vcxproj -> C:\Users\np185137\Documents\NCR work\NCR-INTERN\windowsInternals\Debug\inheritHandleByChildProcess.exe
+﻿
