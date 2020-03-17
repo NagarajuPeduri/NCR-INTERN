@@ -5,17 +5,18 @@
 #include <Windows.h>
 #include <string>
 #include <tchar.h>
+
 using namespace std;
 #define BUFFERSIZE 4096
 
 int main()
 {
     HANDLE fileHandle;
-    fileHandle = CreateFile(L"C:\\Users\\np185137\\Desktop\\NCR documents\\fuel.txt",
-        GENERIC_ALL,
-        0,
+    fileHandle = CreateFile(L"C:\\Users\\np185137\\fuel.txt",
+        GENERIC_READ | GENERIC_WRITE,
+        FILE_SHARE_READ | FILE_SHARE_WRITE,
         NULL,
-        OPEN_ALWAYS,
+        CREATE_ALWAYS,
         FILE_ATTRIBUTE_NORMAL,
         NULL
     );
@@ -31,27 +32,39 @@ int main()
         BOOL status;
         DWORD len = 0;
 
+        //writing into the file
         status = WriteFile(
             fileHandle,
             toWrite.c_str(),
-            toWrite.size()+1,
+            toWrite.length(),
             &len,
             NULL
         );
 
-        if (!status) {
+        if (!true) {
             cout<<"Could not write the content into the file due to an error: " << GetLastError() << endl;
         }
         else {
-            WCHAR read[100];
+            //READING   
+            WCHAR read1[BUFFERSIZE];
+            ZeroMemory(read1, BUFFERSIZE);
             LPVOID st;
             DWORD noOfBytesRead = 0;
             BOOL status;
 
+            //move the file pointer to beginning. 
+            SetFilePointer(
+                fileHandle,
+                NULL,
+                NULL,
+                0
+            );
+
+            //reading from the file
             status = ReadFile(
                 fileHandle,
-                read,
-                toWrite.size() + 1,
+                read1,
+                BUFFERSIZE,
                 &noOfBytesRead,
                 NULL
             );
@@ -60,7 +73,7 @@ int main()
                 cout << "Could not read the content of the file due to an error: " << GetLastError() << endl;
             }
             else {
-                _tprintf(_T("The content in the file are: %s"), read);
+                _tprintf(_T("The content in the file are: %S"), read1);
             }
         }
 

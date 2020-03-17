@@ -1,3 +1,8 @@
 ﻿  operationsOnFile.cpp
-C:\Users\np185137\Documents\NCR work\NCR-INTERN\windowsInternals\operationsOnFile\operationsOnFile.cpp(47,20): warning C4101: 'st': unreferenced local variable
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\windowsInternals\operationsOnFile\operationsOnFile.cpp(76,26): warning C4477: 'wprintf' : format string '%S' requires an argument of type 'char *', but variadic argument 1 has type 'WCHAR *'
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\windowsInternals\operationsOnFile\operationsOnFile.cpp(76,26): message : consider using '%lS' in the format string
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\windowsInternals\operationsOnFile\operationsOnFile.cpp(76,26): message : consider using '%llS' in the format string
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\windowsInternals\operationsOnFile\operationsOnFile.cpp(76,26): message : consider using '%LS' in the format string
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\windowsInternals\operationsOnFile\operationsOnFile.cpp(76,26): message : consider using '%wS' in the format string
+C:\Users\np185137\Documents\NCR work\NCR-INTERN\windowsInternals\operationsOnFile\operationsOnFile.cpp(51,20): warning C4101: 'st': unreferenced local variable
   operationsOnFile.vcxproj -> C:\Users\np185137\Documents\NCR work\NCR-INTERN\windowsInternals\Debug\operationsOnFile.exe
